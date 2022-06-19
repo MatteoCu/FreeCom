@@ -11,7 +11,7 @@ class MyTheme {
         appBarTheme:AppBarTheme(elevation: 0, color:Colors.greenAccent[400]),
         primaryIconTheme:const IconThemeData(color: Colors.white),
         brightness: Brightness.dark,
-        textTheme: GoogleFonts.lobsterTextTheme(textTheme),
+        textTheme: GoogleFonts.rubikTextTheme(textTheme),
         primarySwatch: Colors.green,
   
       );

@@ -11,6 +11,6 @@ Widget roundedPhoto(String imgUrl,
           fit: BoxFit.cover, //coperura immagine
           image: NetworkImage(imgUrl),
         ),
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(radius), topRight: Radius.circular(radius))
+        borderRadius: BorderRadius.all( Radius.circular(radius))
       ),
     );

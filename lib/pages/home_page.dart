@@ -1,6 +1,8 @@
+import 'package:fiverr/customWidget/grid_view_custom.dart';
 import 'package:fiverr/customWidget/roundedConatiner.dart';
 import 'package:fiverr/customWidget/roundedPhoto.dart';
 import 'package:flutter/material.dart';
+
 
 var image = ['https://picsum.photos/250?image=9'];
 var text = [
@@ -38,22 +40,73 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              searchBar(context),
+              Padding(
+                  padding: const EdgeInsets.only(top: 15, left: 15),
+                  child: Text("Categorie",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          ?.apply(color: Colors.white))),
               SingleChildScrollView(
+                  //
                   scrollDirection: Axis.horizontal,
                   child: Row(
                       children: elementsBuilder(
                           DataClass(image: image, text: text)))),
-              Padding(
+               Padding(
                   padding: const EdgeInsets.only(top: 15, left: 15),
-                  child: Text("Categorie",
-                      style: Theme.of(context).textTheme.headline5)),
+                  child: Text("Top Rated",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          ?.apply(color: Colors.white))),
+              GridWiewCustom(image[0])
+              
             ],
           ),
         ));
   }
 }
 
+Tile({required int index}) {
+  return Container(
+    padding:EdgeInsets.all(150),
+    color: Colors.blueAccent,
+  );
+}
+
+Widget searchBar(var context) {
+  return Container(
+    height: 55,
+    margin: const EdgeInsets.only(right: 15, left: 15, bottom: 30, top:40),
+    decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 59, 56, 56),
+        borderRadius: BorderRadius.all(Radius.circular(15))),
+        child:TextField(
+          style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.apply(color: Colors.white),
+          cursorColor:const Color(0xFF9E9E9E),
+          decoration:const  InputDecoration(
+            
+          border: InputBorder.none,
+          labelText: 'serch category',
+          prefixIcon: Icon(
+            Icons.search,
+            color: Color(0xFF9E9E9E),
+          ),
+          labelStyle: TextStyle(color: Colors.white),
+      ),
+    ),
+  );
+}
+
+
+
 List<Widget> elementsBuilder(DataClass data) {
+  //da aggiustre l interfaccia in modo da fare un solo element builder
   List<Widget> elements = <Widget>[];
   for (var index in data.text) {
     elements.add(roundedContainer(
@@ -61,7 +114,7 @@ List<Widget> elementsBuilder(DataClass data) {
         spaceBetween: 15,
         colorText: Colors.white,
         color: Colors.grey[900],
-        widht: 300,
+        widht: 150,
         height: 130,
         radiusBorder: 15,
         name: index,
