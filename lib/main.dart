@@ -17,7 +17,7 @@ class App extends StatelessWidget {
     final theme =  MyTheme(textTheme).getTheme();
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'freeCom',
       theme: theme,
       home: const HomePage(title: 'Frecom'),
     );
