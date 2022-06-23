@@ -1,4 +1,3 @@
-import 'package:fiverr/customWidget/grid_view_custom.dart';
 import 'package:fiverr/customWidget/roundedConatiner.dart';
 import 'package:fiverr/customWidget/roundedPhoto.dart';
 import 'package:flutter/material.dart';
@@ -61,8 +60,8 @@ class HomePage extends StatelessWidget {
                           .textTheme
                           .headline5
                           ?.apply(color: Colors.white))),
-              GridWiewCustom(image[0])
-              
+              Expanded(child: ListView(scrollDirection: Axis.vertical, children :[roundedPhoto(image[0],height: 400)])
+              )
             ],
           ),
         ));
