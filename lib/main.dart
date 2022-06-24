@@ -1,48 +1,13 @@
+import 'package:fiverr/pages/home_page.dart';
 import 'package:fiverr/pages/message_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fiverr/theme/my_theme.dart';
 
+import 'pages/search_page.dart';
+
 void main() {
   runApp(const App());
 }
-
-Map<String, dynamic> messa = {
-  "message": [
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"},
-    {"name": "matteo", "text": "sdadsd", "time": "ffdgfgf"}
-  ]
-};
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -54,9 +19,6 @@ class App extends StatelessWidget {
     final theme = MyTheme(textTheme).getTheme();
 
     return MaterialApp(
-      title: 'freeCom',
-      theme: theme,
-      home: const MessagePage(),
-    );
+        title: 'FreeCom', theme: theme, home: const SearchPage());
   }
 }

@@ -177,7 +177,8 @@ class MessagePage extends StatelessWidget {
                   return ElementList(
                       photo: message[index].photo!,
                       title: message[index].name!,
-                      text: message[index].text!);
+                      text: message[index].text!,
+                      time: message[index].time!);
                 })));
   }
 }
