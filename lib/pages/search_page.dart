@@ -1,4 +1,6 @@
 import 'package:fiverr/customWidget/custom_silver_serchBar.dart';
+import 'package:fiverr/customWidget/elementList.dart';
+import 'package:fiverr/customWidget/roundedConatiner.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -19,9 +21,38 @@ class SearchPage extends StatelessWidget {
       tabs: tabs,
       children: _body(
           tabs: tabs,
-          elements: Container(
-            height: 100,
-          )),
+          elements: Column(children: [
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: ''),
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: ''),
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: ''),
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: ''),
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: ''),
+            ElementList(
+                photo: 'https://picsum.photos/250?image=9',
+                title: 'dffdfsdfd',
+                text: 'shdj',
+                time: '')
+          ])),
       context: context,
     )));
   }

@@ -114,6 +114,6 @@ Widget _subTitleText() {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 17,
-            color: Color(0xFFBDBDBD)),
+            color: Color.fromARGB(255, 255, 255, 255)),
       ));
 }
