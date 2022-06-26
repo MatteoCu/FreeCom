@@ -163,13 +163,16 @@ Map<String, dynamic> mess = {
 };
 
 class MessagePage extends StatelessWidget {
-  const MessagePage({Key? key}) : super(key: key);
+  String title;
+  String urlGet;
+  MessagePage({Key? key, required this.title, required this.urlGet})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     List<Message> message = Messages.fromJson(mess).message!;
     return Scaffold(
-        appBar: AppBar(title: const Text("Message")),
+        appBar: AppBar(title: Text(title)),
         body: SafeArea(
             child: ListView.builder(
                 itemCount: message.length,

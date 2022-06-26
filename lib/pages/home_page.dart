@@ -1,4 +1,4 @@
-import 'package:fiverr/customWidget/roundedConatiner.dart';
+import 'package:fiverr/customWidget/roundedContainer.dart';
 import 'package:fiverr/customWidget/roundedPhoto.dart';
 import 'package:fiverr/customWidget/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -51,9 +51,12 @@ class HomePage extends StatelessWidget {
 
 List<Widget> elementHome(var imageTopRated, BuildContext context) {
   List<Widget> elements = [
+    const SizedBox(
+      height: 30,
+    ),
     searchBar(context),
     Padding(
-        padding: const EdgeInsets.only(top: 15, left: 15),
+        padding: const EdgeInsets.only(left: 15),
         child: Text("Categorie",
             style: Theme.of(context)
                 .textTheme

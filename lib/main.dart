@@ -1,8 +1,9 @@
 import 'package:fiverr/pages/home_page.dart';
-import 'package:fiverr/pages/message_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:fiverr/theme/my_theme.dart';
 
+import 'pages/result_page.dart';
 import 'pages/search_page.dart';
 
 void main() {
@@ -19,6 +20,6 @@ class App extends StatelessWidget {
     final theme = MyTheme(textTheme).getTheme();
 
     return MaterialApp(
-        title: 'FreeCom', theme: theme, home: const SearchPage());
+        title: 'FreeCom', theme: theme, home: const ResultPage());
   }
 }

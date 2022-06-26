@@ -12,8 +12,8 @@ Widget roundedContainer(
         double spaceBetween =
             10, //spazio tra testo e foto o iconnel roundedContainer
         Widget? photo /*pui aggiungere foto o icn*/}) =>
-        SizedBox(child: 
-    Container(
+    SizedBox(
+        child: Container(
       height: height,
       margin: margin,
       //if in-line per stabilire il child del container
@@ -21,10 +21,11 @@ Widget roundedContainer(
       child: photo == null
           ? Container(
               //container con il testo
-              child: Text("$name ",
-                  style:
-                      TextStyle(color: colorText, fontSize: 15)), //stile text
-              margin: const EdgeInsets.only(left: 10, top: 7.1)) //margini
+              child: Center(
+                  child: Text("$name ",
+                      style: TextStyle(
+                          color: colorText, fontSize: 13))), //stile text
+              margin: const EdgeInsets.all(15)) //margini
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
