@@ -16,10 +16,12 @@ Widget roundedContainer(
         child: Container(
       height: height,
       margin: margin,
+      width: widht,
       //if in-line per stabilire il child del container
       // ignore: sort_child_properties_last
       child: photo == null
           ? Container(
+
               //container con il testo
               child: Center(
                   child: Text("$name ",

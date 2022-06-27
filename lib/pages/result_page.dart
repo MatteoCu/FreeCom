@@ -9,23 +9,36 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              title: IconButton(
-                  onPressed: (() {}), icon: const Icon(Icons.arrow_back_sharp)),
-              actions: [
-                IconButton(onPressed: (() {}), icon: const Icon(Icons.share))
-              ],
+      appBar: AppBar(
+        title: IconButton(
+            onPressed: (() {}), icon: const Icon(Icons.arrow_back_sharp)),
+        actions: [
+          IconButton(onPressed: (() {}), icon: const Icon(Icons.share))
+        ],
+      ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Container(),
+          ),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
             ),
-            body: SingleChildScrollView(
-                child: SingleChildScrollView(
-                    child: Column(children: [
-              filter(),
-              ElementResultPage(
-                  padding: const EdgeInsets.all(15),
-                  imgUrl:
-                      'https://i0.wp.com/www.giacomocusano.com/wp-content/uploads/2016/07/coastal-wash-web.jpg?resize=1024%2C640&ssl=1',
-                  height: 100)
-            ])))));
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ElementResultPage(
+                  height: 20,
+                  widht: 20,
+                  imgUrl: "D",
+                );
+              },
+              childCount: 10,
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }
 
