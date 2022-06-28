@@ -1,27 +1,25 @@
-import 'dart:ffi';
-
 import 'package:fiverr/customWidget/roundedContainer.dart';
 import 'package:fiverr/customWidget/roundedPhoto.dart';
 import 'package:flutter/material.dart';
 
-Widget ElementResultPage(
-    {required double widht, required double height, required String imgUrl}) {
-  return Column(children: [
-    roundedContainer(
-      photo: roundedPhoto(
-        imgUrl,
-        radius: 0,
-        height: height - 100,
-      ),
-      name: '',
-      color: Colors.grey[800],
-      height: height,
-      widht: widht,
-      radiusBorder: 15,
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    Text("dsjdsdjskldj")
-  ]);
+Widget ElementResultPage({required double height, required String imgUrl}) {
+  return Card(
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15))),
+      child: Column(children: [
+        Expanded(
+            child: roundedPhoto(
+          imgUrl,
+          whidht: 3000,
+          radius: 0,
+          height: height,
+        )),
+        const SizedBox(
+          height: 16,
+        ),
+        Text("dsjdsdjskldj"),
+        const SizedBox(
+          height: 16,
+        ),
+      ]));
 }
