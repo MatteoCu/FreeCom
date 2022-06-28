@@ -19,17 +19,18 @@ class ResultPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
-            child: Container(),
+            child: filter(),
           ),
           SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
               crossAxisCount: 2,
             ),
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 return ElementResultPage(
-                  height: 20,
-                  widht: 20,
+                  height: 200,
                   imgUrl: "D",
                 );
               },
