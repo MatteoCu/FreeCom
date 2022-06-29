@@ -1,10 +1,14 @@
 import 'package:fiverr/customWidget/elementResultPage.dart';
+import 'package:fiverr/models/result.dart';
 import 'package:flutter/material.dart';
 import 'package:fiverr/customWidget/roundedContainer.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  ReserchResult result;
 
+  ResultPage({Key? key, required this.result}) : super(key: key) {
+    print(result.time);
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,13 +32,14 @@ class ResultPage extends StatelessWidget {
               crossAxisCount: 2,
             ),
             delegate: SliverChildBuilderDelegate(
-              (context, index) {
+              (_, index) {
                 return ElementResultPage(
+                  result.elements[index].description,
                   height: 200,
                   imgUrl: "D",
                 );
               },
-              childCount: 10,
+              childCount: result.elements.length,
             ),
           ),
         ],
