@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fiverr/customWidget/elementResultPage.dart';
 import 'package:fiverr/models/result.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,7 @@ class ResultPage extends StatelessWidget {
                   result.elements[index].description,
                   height: 200,
                   imgUrl: "D",
+                  price: result.elements[index].price[0]
                 );
               },
               childCount: result.elements.length,
