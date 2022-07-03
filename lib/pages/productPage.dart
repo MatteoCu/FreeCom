@@ -23,7 +23,7 @@ class ProductPage extends StatelessWidget {
             context,
           ),
           //body con il testo notizia
-          ScrollableText(
+          ScrollableText(elem,
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam pellentesque nec nam aliquam sem et. In aliquam sem fringilla ut. Viverra tellus in hac habitasse platea. Quis varius quam quisque id diam. Scelerisque ferme")
         ],
       ),
@@ -70,7 +70,7 @@ class ProductPage extends StatelessWidget {
       ];
 }
 
-SliverList ScrollableText(String text) {
+SliverList ScrollableText(var elem, String text) {
   return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
     Container(
@@ -86,10 +86,24 @@ SliverList ScrollableText(String text) {
                 height: 1.6,
                 fontSize: 15,
               ),
-              
             ))),
-            filter()
+    filter(),
+    tableOfService(elem.servicesPrice0)
   ]));
+}
+
+Widget tableOfService(List<Services> services) {
+  List<Widget> colum = [];
+  for (var elem in services) {
+    colum.add(Row(
+      children: [
+        Text(elem.service!),
+        Expanded(child: SizedBox()),
+        Text(elem.pric!)
+      ],
+    ));
+  }
+  return Column(children: colum,);
 }
 
 Widget nameFreeLence(Elements elements) {
@@ -103,7 +117,6 @@ Widget nameFreeLence(Elements elements) {
         Text("djccdkjjjjjjjjjjjj")
       ]));
 }
-
 
 Widget filter() {
   return Padding(

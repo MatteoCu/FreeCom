@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fiverr/customWidget/elementResultPage.dart';
 import 'package:fiverr/models/result.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +6,7 @@ import 'package:fiverr/customWidget/roundedContainer.dart';
 class ResultPage extends StatelessWidget {
   ReserchResult result;
 
-  ResultPage({Key? key, required this.result}) : super(key: key) {
-    print(result.time);
-  }
+  ResultPage({Key? key, required this.result}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,12 +31,10 @@ class ResultPage extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (_, index) {
-                return ElementResultPage(
-                  result.elements[index].description,
-                  height: 200,
-                  imgUrl: "D",
-                  price: result.elements[index].price[0]
-                );
+                return ElementResultPage(result.elements[index].description,
+                    height: 200,
+                    imgUrl: result.elements[index].imgUrl,
+                    price: "${result.elements[index].price[0]} €");
               },
               childCount: result.elements.length,
             ),
