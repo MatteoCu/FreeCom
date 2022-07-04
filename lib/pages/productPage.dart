@@ -48,12 +48,12 @@ class ProductPage extends StatelessWidget {
   ) =>
       <Widget>[
         const Positioned(
+          right: 15,
+          top: 20,
           child: Text(
             "Categoria",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          right: 15,
-          top: 20,
         ),
         Positioned(left: 15, bottom: 0, child: nameFreeLence(elem)),
 
@@ -74,21 +74,21 @@ SliverList ScrollableText(var elem, String text) {
   return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
     Container(
-        color: Colors.grey[800],
+        color: Colors.grey[850],
         child: Container(
-            color: Colors.grey[800],
-            margin: EdgeInsets.only(right: 25, left: 25, top: 20),
+            color: Colors.grey[850],
+            margin:const EdgeInsets.only(right: 25, left: 25, top: 20),
             child: Text(
               text,
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w700,
+              style:const TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255),
+          
                 height: 1.6,
                 fontSize: 15,
               ),
             ))),
     filter(),
-    tableOfService(elem.servicesPrice0)
+    tableOfService(elem.services)
   ]));
 }
 
@@ -97,13 +97,22 @@ Widget tableOfService(List<Services> services) {
   for (var elem in services) {
     colum.add(Row(
       children: [
-        Text(elem.service!),
-        Expanded(child: SizedBox()),
-        Text(elem.pric!)
+        Text(elem.service!, style:const TextStyle(fontSize: 15 ,color: Colors.white),),
+        const Expanded(child: SizedBox()),
+        Icon(iconSelector(elem.pric!, "300"))
       ],
     ));
   }
-  return Column(children: colum,);
+  return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        children: colum,
+      ));
+}
+
+IconData iconSelector(String price, String referencePrice) {
+  if (price == referencePrice) return Icons.verified;
+  return Icons.cancel;
 }
 
 Widget nameFreeLence(Elements elements) {
