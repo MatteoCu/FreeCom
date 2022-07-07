@@ -1,11 +1,12 @@
 import 'dart:html';
 
+import 'package:fiverr/customWidget/search_bar.dart';
 import 'package:flutter/material.dart';
 
 Future<ChatMessage> message(
     {required String user, required String message}) async {
   await Future<void>.delayed(const Duration(seconds: 1));
-  return ChatMessage(username: user, message: message);
+  return ChatMessage(username: user, message: message, isReciver: false);
 }
 
 class MessagePage extends StatefulWidget {
@@ -37,7 +38,7 @@ class _MessagePageState extends State<MessagePage> {
             appBar: AppBar(
               title: const Text('Ernesto loEmo'),
             ),
-            body: Stack(fit: StackFit.expand,children: <Widget>[
+            body: Stack(fit: StackFit.expand, children: <Widget>[
               StreamBuilder(
                 stream: _chat(),
                 builder: (BuildContext context,
@@ -45,20 +46,29 @@ class _MessagePageState extends State<MessagePage> {
                   if (snapshot.hasData) {
                     _chatMessages.add(snapshot.data!);
 
-                    return SingleChildScrollView(child: SizedBox(child: Column(children: chat(_chatMessages))));
+                    return SingleChildScrollView(
+                        child: SizedBox(
+                            child: Column(children: chat(_chatMessages))));
                   } //end if
-                  return const LinearProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 },
               ),
-              Positioned(bottom: 0,child:SizedBox(width: MediaQuery.of(context).size.width,child:TextField() ,) ),
+              Positioned(
+                  bottom: 0,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: messageTextField(),
+                  )),
             ])));
   }
 }
 
 class ChatMessage {
+  bool isReciver;
   String message;
   String username;
-  ChatMessage({required this.username, required this.message});
+  ChatMessage(
+      {required this.username, required this.message, required this.isReciver});
 }
 
 List<Widget> chat(List<ChatMessage> chatMessages) {
@@ -68,21 +78,26 @@ List<Widget> chat(List<ChatMessage> chatMessages) {
     message.add(Row(
         // user name
         children: [
-          Text(
-            chatItem.username,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          SizedBox(width: 15)
-          // message
-          ,
-          Text(
-            chatItem.message,
-            style: TextStyle(
-                fontSize: 20,
-                // use different colors for different people
-                color:
-                    chatItem.username == 'Trump' ? Colors.pink : Colors.blue),
-          ),
+          Container(
+            padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+            child: Align(
+              alignment:
+                  (chatItem.isReciver ? Alignment.topLeft : Alignment.topRight),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: (chatItem.isReciver
+                      ? Colors.grey.shade200
+                      : Colors.blue[200]),
+                ),
+                padding:const EdgeInsets.all(10),
+                child: Text(
+                  chatItem.message,
+                  style: TextStyle(fontSize: 15),
+                ),
+              ),
+            ),
+          )
         ]));
   }
   return message;
@@ -90,14 +105,26 @@ List<Widget> chat(List<ChatMessage> chatMessages) {
 /*Container(
       padding: EdgeInsets.only(left: 14,right: 14,top: 10,bottom: 10),
       child: Align(
-        alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
+        alignment: (chatItem.isReciver  ?Alignment.topLeft:Alignment.topRight),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: (messages[index].messageType  == "receiver"?Colors.grey.shade200:Colors.blue[200]),
+            color: (chatItem.isReciver ?Colors.grey.shade200:Colors.blue[200]),
           ),
           padding: EdgeInsets.all(16),
-          child: Text(messages[index].messageContent, style: TextStyle(fontSize: 15),),
+          child: Text(chatItem.message, style: TextStyle(fontSize: 15),),
         ),
       ),
     );*/
+
+Widget messageTextField() {
+  return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+      child: TextField(
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50))),
+            hintText: 'Enter a message',
+          )));
+}
