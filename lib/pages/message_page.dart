@@ -22,7 +22,7 @@ class _MessagePageState extends State<MessagePage> {
 
   // More messages will be yielded overtime
   Stream<ChatMessage> _chat() async* {
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 10; i++) {
       yield await message(
           user: "thomas turbato",
           message: "ciao"); //todo mettere richiesta http quando
@@ -32,19 +32,12 @@ class _MessagePageState extends State<MessagePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
               title: const Text('Ernesto loEmo'),
             ),
-            body: Stack(children: <Widget>[Positioned(
-                top: MediaQuery.of(context).size.height-100,
-                child: SizedBox(
-                  child: const TextField(),
-                  width: MediaQuery.of(context).size.width,
-                ),
-              ),
+            body: Stack(fit: StackFit.expand,children: <Widget>[
               StreamBuilder(
                 stream: _chat(),
                 builder: (BuildContext context,
@@ -52,13 +45,12 @@ class _MessagePageState extends State<MessagePage> {
                   if (snapshot.hasData) {
                     _chatMessages.add(snapshot.data!);
 
-                    return SingleChildScrollView(
-                        child: Column(children: chat(_chatMessages)));
+                    return SingleChildScrollView(child: SizedBox(child: Column(children: chat(_chatMessages))));
                   } //end if
                   return const LinearProgressIndicator();
                 },
               ),
-              
+              Positioned(bottom: 0,child:SizedBox(width: MediaQuery.of(context).size.width,child:TextField() ,) ),
             ])));
   }
 }
