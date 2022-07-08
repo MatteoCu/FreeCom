@@ -1,8 +1,9 @@
 import 'package:fiverr/models/result.dart';
+import 'package:fiverr/pages/account_page.dart';
 import 'package:fiverr/pages/home_page.dart';
 import 'package:fiverr/pages/item_page.dart';
 import 'package:fiverr/pages/message_page.dart';
-import 'package:fiverr/pages/productPage.dart';
+import 'package:fiverr/pages/product_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fiverr/theme/my_theme.dart';
@@ -49,6 +50,6 @@ class App extends StatelessWidget {
     return MaterialApp(
         title: 'FreeCom',
         theme: theme,
-        home:const MessagePage());
+        home:const AccountPage());
   }
 }
