@@ -25,9 +25,18 @@ class AccountPage extends StatelessWidget {
                       left: 20,
                       top: MediaQuery.of(context).size.height * 0.25 - 30,
                       child:
-                          roundedPhoto("d", height: 60, whidht: 60, radius: 60))
+                          roundedPhoto("d", height: 60, whidht: 60, radius: 60)),
+                  const Center(child: Text("Matteo Curia"),)
                 ],
-              ))
+              )),
+              SingleChildScrollView(child :Column(crossAxisAlignment: CrossAxisAlignment.start,children: const <Widget>  [
+               Text("Account", style: TextStyle(fontSize: 20),),
+               Text("change photo"),
+               Divider(),
+               
+               Text("Account", style: TextStyle(fontSize: 20),),
+               Text("change photo"),
+              ],))
         ],
       ),
     ));
