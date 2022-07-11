@@ -24,21 +24,59 @@ class AccountPage extends StatelessWidget {
                   Positioned(
                       left: 20,
                       top: MediaQuery.of(context).size.height * 0.25 - 30,
-                      child:
-                          roundedPhoto("d", height: 60, whidht: 60, radius: 60)),
-                  const Center(child: Text("Matteo Curia"),)
+                      child: roundedPhoto("d",
+                          height: 60, whidht: 60, radius: 60)),
+                  const Center(
+                    child: Text("Matteo Curia"),
+                  )
                 ],
               )),
-              SingleChildScrollView(child :Column(crossAxisAlignment: CrossAxisAlignment.start,children: const <Widget>  [
-               Text("Account", style: TextStyle(fontSize: 20),),
-               Text("change photo"),
-               Divider(),
-               
-               Text("Account", style: TextStyle(fontSize: 20),),
-               Text("change photo"),
-              ],))
+          SingleChildScrollView(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              category("buying"),
+              subCategoryButton(
+                  icon: Icons.account_box_outlined, text: "post a request")
+            ],
+          ))
         ],
       ),
     ));
   }
+}
+
+Widget category(String title) {
+  return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Text(
+        title,
+        style: const TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+      ));
+}
+
+Widget subCategoryButton({required IconData icon, required String text}) {
+  return GestureDetector(
+      onTap: (() {}),
+      child: Row(
+        children: [
+          const SizedBox(
+            width: 15,
+          ),
+          Icon(icon),
+          const SizedBox(
+            width: 15,
+          ),
+          Text(
+            text,
+            style: const TextStyle(color: Colors.white),
+          ),
+          Expanded(child: Container()),
+          const Icon(Icons.arrow_forward_ios),
+          const SizedBox(
+            width: 15,
+          )
+        ],
+      ));
 }
