@@ -37,7 +37,7 @@ class AccountPage extends StatelessWidget {
               category("Buying"),
               subCategoryButton(
                   icon: Icons.account_box_outlined, text: "post a request"),
-              subCategoryButton(icon: Icons.edit, text: "manage a request"),
+              subCategoryButton(icon: Icons.edit, text: "manage a request"),//item page
               category("General"),
               subCategoryButton(icon: Icons.settings, text: "setting"),
               subCategoryButton(icon: Icons.send, text: "invite friends"),
