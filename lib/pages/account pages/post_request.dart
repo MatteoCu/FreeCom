@@ -5,13 +5,14 @@ const List<String> CATEGORY = ["Logo", "Developement", "Course"];
 const List<String> SUB_CATEGORY = [...CATEGORY];
 
 class PostRequest extends StatelessWidget {
-  const PostRequest({Key? key}) : super(key: key);
+  final String title;
+  const PostRequest(this.title, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(title: Text("Post a service")),
+            appBar: AppBar(title: Text(title)),
             body: Padding(
                 padding: const EdgeInsets.all(15),
                 child: SingleChildScrollView(
@@ -22,6 +23,7 @@ class PostRequest extends StatelessWidget {
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.4,
                             child: const TextField(
+                    
                               textAlignVertical: TextAlignVertical.top,
                               maxLines: null,
                               expands: true,
@@ -48,8 +50,10 @@ class PostRequest extends StatelessWidget {
                                   labelText: "minumum price",
                                   border: OutlineInputBorder()),
                             )),
-                            const SizedBox(height: 20,),
-                            const SizedBox(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const SizedBox(
                             height: 70,
                             child: TextField(
                               keyboardType: TextInputType.number,
@@ -61,8 +65,10 @@ class PostRequest extends StatelessWidget {
                                   labelText: "standard price",
                                   border: OutlineInputBorder()),
                             )),
-                            const SizedBox(height: 20,),
-                            const SizedBox(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const SizedBox(
                             height: 70,
                             child: TextField(
                               keyboardType: TextInputType.number,
@@ -74,9 +80,7 @@ class PostRequest extends StatelessWidget {
                                   labelText: "premium price",
                                   border: OutlineInputBorder()),
                             )),
-
                       ]),
-                      
                 ))));
   }
 }
