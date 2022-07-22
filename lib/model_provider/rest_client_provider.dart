@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 class RestClientProvider<T> extends ChangeNotifier {
   T? model;
   bool loading = false;
-  T Function(Map<String, dynamic>) x;
+  String url;
+  T Function(Map<String, dynamic>) constructor;
 
-  RestClientProvider(this.x);
+  RestClientProvider(this.constructor, this.url);
 
   Future<void> getData() async {
     loading = true;
-    model = (await RequestHttp<T>().getHttp(x));
+    Future.delayed(const Duration(seconds: 2));
+    model = (await RequestHttp<T>(url).getHttp(constructor));
     loading = false;
 
     notifyListeners();
@@ -18,7 +20,7 @@ class RestClientProvider<T> extends ChangeNotifier {
 
   Future<void> postData() async {
     loading = true;
-    model = (await RequestHttp<T>().postHttp(x));
+    model = (await RequestHttp<T>(url).postHttp(constructor));
     loading = false;
 
     notifyListeners();
