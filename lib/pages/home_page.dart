@@ -1,23 +1,9 @@
 import 'package:fiverr/customWidget/roundedContainer.dart';
 import 'package:fiverr/customWidget/roundedPhoto.dart';
 import 'package:fiverr/customWidget/search_bar.dart';
+import 'package:fiverr/models/home_page.dart';
 import 'package:flutter/material.dart';
 
-var image = [
-  'https://picsum.photos/250?image=9',
-  'https://picsum.photos/250?image=9',
-  'https://picsum.photos/250?image=9',
-  'https://picsum.photos/250?image=9'
-];
-var text = [
-  'testo a caso',
-  'resto random',
-  'jdshajdhsajdh',
-  'jdshajdhsajdh',
-  'jdshajdhsajdh',
-  'jdshajdhsajdh',
-  'jdshajdhsajdh'
-];
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -44,12 +30,12 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: elementHome(image, context))),
+                  children: elementHome(HomePageResult.fromJson(json), context))),
         ));
   }
 }
 
-List<Widget> elementHome(var imageTopRated, BuildContext context) {
+List<Widget> elementHome(HomePageResult res, BuildContext context) {
   List<Widget> elements = [
     const SizedBox(
       height: 30,
@@ -66,7 +52,7 @@ List<Widget> elementHome(var imageTopRated, BuildContext context) {
         //
         scrollDirection: Axis.horizontal,
         child: Row(
-            children: elementsBuilder(DataClass(image: image, text: text)))),
+            children: elementsBuilder(HomePageResult.fromJson(json)))),
     Padding(
         padding: const EdgeInsets.only(top: 15, left: 15),
         child: Text("Top Rated",
@@ -76,11 +62,11 @@ List<Widget> elementHome(var imageTopRated, BuildContext context) {
                 ?.apply(color: Colors.white))),
   ];
 
-  for (var index in imageTopRated) {
+  for (TopRated index in res.topRated) {
     elements.add(Padding(
         padding: const EdgeInsets.all(15),
         child: Center(
-            child: roundedPhoto(index, radius: 15, height: 250, whidht: 300))));
+            child: roundedPhoto(index.imgUrl, radius: 15, height: 250, whidht: 300))));
   }
 
   return elements;
@@ -93,10 +79,12 @@ Tile({required int index}) {
   );
 }
 
-List<Widget> elementsBuilder(DataClass data) {
+List<Widget> elementsBuilder(HomePageResult res) {//categorie
   //da aggiustre l interfaccia in modo da fare un solo element builder
+  int i = 0;
   List<Widget> elements = <Widget>[];
-  for (var index in data.text) {
+  for (String index in res.categories) {
+    i++;
     elements.add(roundedContainer(
         margin: const EdgeInsets.all(15),
         spaceBetween: 15,
@@ -105,15 +93,86 @@ List<Widget> elementsBuilder(DataClass data) {
         widht: 150,
         height: 130,
         radiusBorder: 15,
-        name: index,
-        photo: roundedPhoto(image[0], radius: 15, height: 80, whidht: 150)));
+        name: res.categories[0],
+        photo: roundedPhoto(res.topRated[0].imgUrl, radius: 15, height: 80, whidht: 150)));
   }
   return elements;
 }
 
-class DataClass {
-  List<String> image;
-  List<String> text;
 
-  DataClass({required this.image, required this.text});
-}
+
+
+var json = {
+    "categories" : ["logo", "design", "xdcccdcd", "dcc"],
+    "topRated" : [
+      {
+      "name": "matteo",
+      "imgUrl":
+          "https://th.bing.com/th/id/OIP.4XB8NF1awQyApnQDDmBmQwHaEo?pid=ImgDet&rs=1",
+      "description": "descriozone interessante",
+      "value": 5,
+      "price": ["200", "300", "500"],
+      "services": [
+        {"price0": "open source"},
+        {"price0": " 1 pages"},
+        {"price1": "logo"},
+        {"price2": "closed source"}
+      ],
+      "comments": [
+        {"name": "matteo", "text": "dfdfsdf"}
+      ]
+    },
+    {
+      "name": "matteo",
+      "imgUrl":
+          "https://th.bing.com/th/id/OIP.4XB8NF1awQyApnQDDmBmQwHaEo?pid=ImgDet&rs=1",
+      "description": "descriozone interessante",
+      "value": 5,
+      "price": ["200", "300", "500"],
+      "services": [
+        {"price0": "open source"},
+        {"price0": " 1 pages"},
+        {"price1": "logo"},
+        {"price2": "closed source"}
+      ],
+      "comments": [
+        {"name": "matteo", "text": "dfdfsdf"}
+      ]
+    },{
+      "name": "matteo",
+      "imgUrl":
+          "https://th.bing.com/th/id/OIP.4XB8NF1awQyApnQDDmBmQwHaEo?pid=ImgDet&rs=1",
+      "description": "descriozone interessante",
+      "value": 5,
+      "price": ["200", "300", "500"],
+      "services": [
+        {"price0": "open source"},
+        {"price0": " 1 pages"},
+        {"price1": "logo"},
+        {"price2": "closed source"}
+      ],
+      "comments": [
+        {"name": "matteo", "text": "dfdfsdf"}
+      ]
+    },{
+      "name": "matteo",
+      "imgUrl":
+          "https://th.bing.com/th/id/OIP.4XB8NF1awQyApnQDDmBmQwHaEo?pid=ImgDet&rs=1",
+      "description": "descriozone interessante",
+      "value": 5,
+      "price": ["200", "300", "500"],
+      "services": [
+        {"price0": "open source"},
+        {"price0": " 1 pages"},
+        {"price1": "logo"},
+        {"price2": "closed source"}
+      ],
+      "comments": [
+        {"name": "matteo", "text": "dfdfsdf"}
+      ]
+    },
+
+    ]
+
+
+  };
