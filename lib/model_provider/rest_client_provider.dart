@@ -2,27 +2,27 @@ import 'package:fiverr/network/rest_client.dart';
 import 'package:flutter/material.dart';
 
 class RestClientProvider<T> extends ChangeNotifier {
-  T? model;
+  late T model;
   bool loading = false;
   String url;
-  T Function(Map<String, dynamic>) constructor;
 
-  RestClientProvider(this.constructor, this.url);
+  RestClientProvider(this.url);
 
-  Future<void> getData() async {
+  Future<T> getData(T Function(Map<String, dynamic>) constructor) async {
     loading = true;
     Future.delayed(const Duration(seconds: 2));
-    model = (await RequestHttp<T>(url).getHttp(constructor));
+    model = (await RequestHttp<T>(url).getHttp(constructor))!;
     loading = false;
 
     notifyListeners();
+    return model;
   }
 
-  Future<void> postData() async {
+  /*Future<void> postData(T Function(Map<String, dynamic>) constructor) async {
     loading = true;
     model = (await RequestHttp<T>(url).postHttp(constructor));
     loading = false;
 
     notifyListeners();
-  }
+  }*/
 }
