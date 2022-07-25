@@ -15,23 +15,25 @@ class BottomBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //ricostruisce i widget quando viene notificato il cambiamento dai modelProvider
-    return ChangeNotifierProvider<RestClientProvider<HomePageResult>>(
-      create: (context) => RestClientProvider("http://127.0.0.1:3000"),
-      child: const BottomBar(),
-    );
+    return MultiProvider(providers: [
+      ChangeNotifierProvider<RestClientProvider<HomePageResult>>(
+        create: (context) => RestClientProvider("http://127.0.0.1:3000"),
+        //child: const BottomBar3(),
+      )
+    ], child: const BottomBar3(),);
   }
-}
+}//todo fare tanti change notifier per ogni client da dove scaricare i diversi model
 
-class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
+class BottomBar3 extends StatefulWidget {
+  const BottomBar3({Key? key}) : super(key: key);
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<BottomBar3> createState() => _BottomBarState();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _BottomBarState extends State<BottomBar3> {
   @override
-  void initState() {
+  void initState() {//todo salvare in diversi model i diversi dowload e passarli alle altri classi per dipendecy injection
     super.initState();
     final model =
         Provider.of<RestClientProvider<HomePageResult>>(context, listen: false);
@@ -44,12 +46,18 @@ class _BottomBarState extends State<BottomBar> {
     if (model.loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
-    return BottomBar(
-        context, model.getData(((p0) => HomePageResult.fromJson(p0))));
+    return BottomBar(context, model.model);
   }
 
-  Widget BottomBar(BuildContext context, var article) {
-    final pageArray = [const HomePage(title: "fvffvfv"), const AccountPage(), const MessagePage()];
+  Widget BottomBar(BuildContext context, HomePageResult model) {
+    final pageArray = [
+      HomePage(
+        title: "fvffvfv",
+        model: model,
+      ),
+      const AccountPage(),
+      const MessagePage()
+    ];
     return ChangeNotifierProvider<BottomBarProvider>(
         create: (context) => BottomBarProvider(),
         child:
