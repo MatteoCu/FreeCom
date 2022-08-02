@@ -5,11 +5,15 @@ import 'package:fiverr/pages/product_page.dart';
 import 'package:http/http.dart' as http;
 
 class RequestHttp<T> {
-  Future<T?> getHttp(T Function(Map<String, dynamic> x) constructor,
-      {String? request}) async {
-    //RequestHttp<messageModel>(json).gethttp
-    final response = await http.get(Uri.parse('http://${request}'));
+  String url;
+  RequestHttp(this.url);
 
+  Future<T?> getHttp(
+    T Function(Map<String, dynamic> x) constructor,
+  ) async {
+    //RequestHttp<messageModel>(json).gethttp
+    final response = await http.get(Uri.parse(url));
+    //print(response.body);
     if (response.statusCode == 200) {
       return constructor(jsonDecode(response.body));
     } else {

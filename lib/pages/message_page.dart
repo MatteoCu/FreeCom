@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:js';
 
 import 'package:fiverr/customWidget/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,8 @@ List<Widget> chat(List<ChatMessage> chatMessages) {
         // user name
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+            padding:
+                const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
             child: Align(
               alignment:
                   (chatItem.isReciver ? Alignment.topLeft : Alignment.topRight),
@@ -90,7 +91,7 @@ List<Widget> chat(List<ChatMessage> chatMessages) {
                       ? Colors.grey.shade200
                       : Colors.blue[200]),
                 ),
-                padding:const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   chatItem.message,
                   style: TextStyle(fontSize: 15),
@@ -118,13 +119,15 @@ List<Widget> chat(List<ChatMessage> chatMessages) {
     );*/
 
 Widget messageTextField() {
-  return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      child: TextField(
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50))),
-            hintText: 'Enter a message',
-          )));
+  return Container(
+    color: Colors.grey[900],
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+    child: const TextField(
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50))),
+          hintText: 'Enter a message',
+        )),
+  );
 }

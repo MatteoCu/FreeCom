@@ -162,10 +162,10 @@ Map<String, dynamic> mess = {
   ]
 };
 
-class MessagePage extends StatelessWidget {
+class ItemPage extends StatelessWidget {
   String title;
   String urlGet;
-  MessagePage({Key? key, required this.title, required this.urlGet})
+  ItemPage({Key? key, required this.title, required this.urlGet})
       : super(key: key);
 
   @override

@@ -1,15 +1,14 @@
+
+import 'package:fiverr/models/home_page.dart';
 import 'package:fiverr/models/result.dart';
-import 'package:fiverr/pages/account_page.dart';
+import 'package:fiverr/pages/bottom_bar_page.dart';
 import 'package:fiverr/pages/home_page.dart';
-import 'package:fiverr/pages/item_page.dart';
-import 'package:fiverr/pages/message_page.dart';
-import 'package:fiverr/pages/product_page.dart';
+import 'package:fiverr/pages/result_page.dart';
+import 'package:fiverr/pages/search_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fiverr/theme/my_theme.dart';
 
-import 'pages/result_page.dart';
-import 'pages/search_page.dart';
 
 Map<String, dynamic> json = {
   "time": "fkmf",
@@ -47,9 +46,6 @@ class App extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final theme = MyTheme(textTheme).getTheme();
 
-    return MaterialApp(
-        title: 'FreeCom',
-        theme: theme,
-        home:const AccountPage());
+    return MaterialApp(title: 'FreeCom', theme: theme, home:BottomBarPage());
   }
 }

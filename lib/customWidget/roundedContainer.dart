@@ -7,6 +7,7 @@ Widget roundedContainer(
         required String name, //testo roundedContainer
         EdgeInsets? margin, //distanza dagli altri widget
         Color? colorText, // colore del testo
+        double fontsize = 15,
         double?
             widht, //larghezza roundedContainer se non specificata la si calcola in automatico
         double spaceBetween =
@@ -23,11 +24,13 @@ Widget roundedContainer(
           ? Container(
 
               //container con il testo
+              margin: const EdgeInsets.all(15),
+
+              //container con il testo
               child: Center(
                   child: Text("$name ",
                       style: TextStyle(
-                          color: colorText, fontSize: 13))), //stile text
-              margin: const EdgeInsets.all(15)) //margini
+                          color: colorText, fontSize: fontsize)))) //margini
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,7 +40,7 @@ Widget roundedContainer(
                     padding: const EdgeInsets.only(left: 10),
                     child: Text(
                       "$name ", //spazio alla fine per non fare attacare il sto alla fine
-                      style: TextStyle(color: colorText, fontSize: 15),
+                      style: TextStyle(color: colorText, fontSize: fontsize),
                     )),
               ],
             ),

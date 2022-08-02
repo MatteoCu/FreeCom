@@ -24,7 +24,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
             //elementi bottomAppBar
             _navigationBarItem("home page", Icons.home_filled),
             _navigationBarItem("discover page", Icons.search),
-            _navigationBarItem("message", Icons.message)
+            _navigationBarItem("message", Icons.message),
+            
           ]);
     });
   }

@@ -3,11 +3,13 @@ class Messages {
 
   Messages({this.message});
 
+ 
+
   Messages.fromJson(Map<String, dynamic> json) {
     if (json['message'] != null) {
       message = <Message>[];
       json['message'].forEach((v) {
-        message!.add(new Message.fromJson(v));
+        message!.add(Message.fromJson(v));
       });
     }
   }
@@ -48,3 +50,6 @@ class Message {
     return data;
   }
 }
+
+
+

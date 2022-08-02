@@ -10,7 +10,6 @@ class RestClientProvider<T> extends ChangeNotifier {
 
   Future<T> getData(T Function(Map<String, dynamic>) constructor) async {
     loading = true;
-    Future.delayed(const Duration(seconds: 2));
     model = (await RequestHttp<T>(url).getHttp(constructor))!;
     loading = false;
 
@@ -22,7 +21,6 @@ class RestClientProvider<T> extends ChangeNotifier {
     loading = true;
     model = (await RequestHttp<T>(url).postHttp(constructor));
     loading = false;
-
     notifyListeners();
   }*/
 }

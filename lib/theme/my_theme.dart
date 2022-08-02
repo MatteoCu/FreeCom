@@ -8,11 +8,12 @@ class MyTheme {
 
   ThemeData getTheme() {
     return ThemeData(
-      appBarTheme: AppBarTheme(elevation: 0, color: Colors.greenAccent[400]),
+      appBarTheme:const AppBarTheme(elevation: 0, color: Color.fromARGB(255, 76, 77, 76)),
       primaryIconTheme: const IconThemeData(color: Colors.white),
       brightness: Brightness.dark,
       textTheme: GoogleFonts.kanitTextTheme(textTheme),
       primarySwatch: Colors.green,
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
     );
   }
 }

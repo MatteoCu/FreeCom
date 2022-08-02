@@ -31,10 +31,12 @@ class ResultPage extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (_, index) {
-                return ElementResultPage(result.elements[index].description,
-                    height: 200,
-                    imgUrl: result.elements[index].imgUrl,
-                    price: "${result.elements[index].price[0]} €");
+                return ElementResultPage(
+                  result.elements[index].description,
+                  height: 200,
+                  imgUrl: result.elements[index].photo,
+                  //price: "${result.elements[index].price[0]} €");
+                );
               },
               childCount: result.elements.length,
             ),

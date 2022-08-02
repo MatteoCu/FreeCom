@@ -1,3 +1,4 @@
+import 'package:fiverr/customWidget/roundedContainer.dart';
 import 'package:fiverr/customWidget/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -25,16 +26,16 @@ Widget _Appbar(
         body: TabBarView(children: children),
         headerSliverBuilder: (context, value) => <Widget>[
               SliverAppBar(
-                backgroundColor: Colors.white,
+                backgroundColor: Color.fromARGB(255, 102, 102, 102),
                 floating: true,
                 expandedHeight: 300,
                 bottom: TabBar(
-                    labelColor: Colors.black,
+                    labelColor: Color.fromARGB(255, 255, 255, 255),
                     labelPadding: const EdgeInsets.only(right: 25, left: 25),
                     indicatorPadding:
                         const EdgeInsets.only(right: 25, left: 25),
                     isScrollable: true,
-                    indicatorColor: const Color(0xFF000000),
+                    indicatorColor: Color.fromARGB(255, 172, 172, 172),
                     tabs: _tabsName(tabs)),
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
@@ -50,13 +51,32 @@ Column _costomWidgetAppBar(BuildContext context) {
     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      const SizedBox(height: 80),
-      _titleText(),
+      const SizedBox(height: 10),
       _subTitleText(),
+      _titleText(),
       const SizedBox(
-        height: 50,
+        height: 10,
       ),
-      searchBar(context)
+      Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 100,
+              child: searchBar(context),
+            ),
+            SizedBox(
+                height: 45,
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ))),
+                    child: const Icon(Icons.clear_all)))
+          ])
     ],
   );
 }
@@ -75,9 +95,9 @@ Widget appbar(
               SliverAppBar(
                 //backgroundColor: Colors.white,
                 floating: true,
-                expandedHeight: 300,
+                expandedHeight: 200,
                 bottom: TabBar(
-                    labelColor: Colors.black,
+                    labelColor:const Color.fromARGB(255, 255, 255, 255),
                     labelPadding: const EdgeInsets.only(right: 25, left: 25),
                     indicatorPadding:
                         const EdgeInsets.only(right: 25, left: 25),
@@ -96,11 +116,11 @@ Widget appbar(
 Widget _titleText() {
   return Container(
     height: 50,
-    margin: const EdgeInsets.only(left: 25, right: 25),
+    margin: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
     child: const Text(
-      "Discover",
+      "Il cerca semi",
       style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
+          fontWeight: FontWeight.bold, fontSize: 40, color: Color.fromARGB(255, 255, 255, 255)),
     ),
   );
 }
@@ -110,7 +130,7 @@ Widget _subTitleText() {
       height: 22,
       margin: const EdgeInsets.only(left: 25, right: 25, top: 1),
       child: const Text(
-        "Discover best freelencer",
+        "Benvenuto nome utente",
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 17,

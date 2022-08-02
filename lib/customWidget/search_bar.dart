@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget searchBar(BuildContext context) {
   return Container(
-    height: 55,
+    height: 45,
     margin: const EdgeInsets.only(right: 15, left: 15, bottom: 30),
     decoration: const BoxDecoration(
         color: Color.fromARGB(255, 66, 66, 66),
@@ -12,7 +12,7 @@ Widget searchBar(BuildContext context) {
       cursorColor: Colors.white,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color.fromRGBO(41, 38, 38, 1)),
+          borderSide: BorderSide(color: Color.fromARGB(0, 41, 38, 38)),
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         border: InputBorder.none,

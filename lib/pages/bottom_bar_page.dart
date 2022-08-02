@@ -3,11 +3,12 @@ import 'package:fiverr/model_provider/rest_client_provider.dart';
 import 'package:fiverr/models/home_page.dart';
 import 'package:fiverr/pages/account_page.dart';
 import 'package:fiverr/pages/message_page.dart';
+import 'package:fiverr/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../model_provider/bottom_bar_provider.dart';
-import 'home_page.dart';
+
 
 class BottomBarPage extends StatelessWidget {
   const BottomBarPage({Key? key}) : super(key: key);
@@ -15,14 +16,17 @@ class BottomBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //ricostruisce i widget quando viene notificato il cambiamento dai modelProvider
-    return MultiProvider(providers: [
-      ChangeNotifierProvider<RestClientProvider<HomePageResult>>(
-        create: (context) => RestClientProvider("http://127.0.0.1:3000"),
-        //child: const BottomBar3(),
-      )
-    ], child: const BottomBar3(),);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<RestClientProvider<HomePageResult>>(
+          create: (context) => RestClientProvider("http://127.0.0.1:3000/home"),
+          //child: const BottomBar3(),
+        )
+      ],
+      child: const BottomBar3(),
+    );
   }
-}//todo fare tanti change notifier per ogni client da dove scaricare i diversi model
+} //todo fare tanti change notifier per ogni client da dove scaricare i diversi model
 
 class BottomBar3 extends StatefulWidget {
   const BottomBar3({Key? key}) : super(key: key);
@@ -33,11 +37,12 @@ class BottomBar3 extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar3> {
   @override
-  void initState() {//todo salvare in diversi model i diversi dowload e passarli alle altri classi per dipendecy injection
+  void initState() {
+    //todo salvare in diversi model i diversi dowload e passarli alle altri classi per dipendecy injection
     super.initState();
-    final model =
+    final homepage =
         Provider.of<RestClientProvider<HomePageResult>>(context, listen: false);
-    model.getData((p0) => HomePageResult.fromJson(p0));
+    homepage.getData((p0) => HomePageResult.fromJson(p0));
   }
 
   @override
@@ -51,12 +56,9 @@ class _BottomBarState extends State<BottomBar3> {
 
   Widget BottomBar(BuildContext context, HomePageResult model) {
     final pageArray = [
-      HomePage(
-        title: "fvffvfv",
-        model: model,
-      ),
+      HomePage(model, "Matteo"),
       const AccountPage(),
-      const MessagePage()
+      const MessagePage(),
     ];
     return ChangeNotifierProvider<BottomBarProvider>(
         create: (context) => BottomBarProvider(),
